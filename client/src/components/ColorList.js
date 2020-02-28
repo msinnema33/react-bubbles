@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { axiosWithAuth } from "../Utils/axiosWithAuth";
+import { useHistory } from "react-router-dom";
+const history = useHistory();
 
 const initialColor = {
   color: "",
@@ -24,7 +27,14 @@ const ColorList = ({ colors, updateColors }) => {
   };
 
   const deleteColor = color => {
-    // make a delete request to delete this color
+    color.preventDefault();
+    axiosWithAuth()
+      .delete(`/api/colors/${color.id}`)
+      .then(res =>{
+      (console.log(res))
+      setColorToEdit(null)
+      history.pushState('/B')
+      });
   };
 
   return (
