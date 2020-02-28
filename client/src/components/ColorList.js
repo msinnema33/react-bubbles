@@ -33,9 +33,6 @@ const ColorList = ({ colors, updateColors }) => {
            return color.id === res.data.id ? res.data : color
          })
        )
-
-      //  updateColors(res.data);
-      //  history.push('/Bubblespage');
      })
      .catch(err => console.log(err)); 
   };
