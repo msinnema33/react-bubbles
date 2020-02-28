@@ -16,6 +16,7 @@ class Login extends React.Component {
               ...this.setState.credentials,
               [e.target.name]: e.target.value
           }
+          
       });
   };
 
@@ -26,9 +27,9 @@ class Login extends React.Component {
         .post('/api/login', this.state.credentials)
         .then(res => {
           console.log(res)
-            localStorage.setItem('token', res.data.payload);
+            window.localStorage.setItem('token', res.data.payload);
             console.log(localStorage)
-            this.props.history.push('/bubblePage');
+            this.props.history.push('/BubblePage');
         })
         .catch(err => console.log(err));
   };
