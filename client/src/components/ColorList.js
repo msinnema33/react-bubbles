@@ -34,8 +34,8 @@ const ColorList = ({ colors, updateColors }) => {
          })
        )
 
-       updateColors(res.data);
-       history.push('/Bubblespage');
+      //  updateColors(res.data);
+      //  history.push('/Bubblespage');
      })
      .catch(err => console.log(err)); 
   };
