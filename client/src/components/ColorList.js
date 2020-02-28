@@ -23,7 +23,7 @@ const ColorList = ({ colors, updateColors }) => {
   const saveEdit = e => {
     e.preventDefault();
     axiosWithAuth()
-     .put(`/api/colors/${color.id}`, color)
+     .put(`/api/colors/${e.id}`, e)
      .then(res => {
        updateColors(res.data);
        history.push('/Bubblespage');
