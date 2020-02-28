@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { axiosWithAuth } from "../Utils/axiosWithAuth";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
 
 const initialColor = {
@@ -23,8 +23,17 @@ const ColorList = ({ colors, updateColors }) => {
   const saveEdit = e => {
     e.preventDefault();
     axiosWithAuth()
-     .put(`/api/colors/${e.id}`, e)
+     .put(`/api/colors/${colorToEdit.id}`, colorToEdit)
      .then(res => {
+       console.log(res)
+       console.log(colors)
+       setEditing(false)
+       updateColors(
+         colors.map(color => {
+           return color.id === res.data.id ? res.data : color
+         })
+       )
+
        updateColors(res.data);
        history.push('/Bubblespage');
      })
