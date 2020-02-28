@@ -28,7 +28,7 @@ const ColorList = ({ colors, updateColors }) => {
   };
 
   const deleteColor = color => {
-    color.preventDefault();
+    // color.preventDefault();
     axiosWithAuth()
       .delete(`/api/colors/${color.id}`)
       .then(res =>{
